@@ -3,6 +3,7 @@ class Ray {
         this.pos = pos;
         this.direction = p5.Vector.fromAngle(direction);
         this.color = color;
+        this.color.setAlpha(100);
     }
 
     paint() {
@@ -16,7 +17,7 @@ class Ray {
 
     paintToIntersectionPoint(point) {
         push();
-        stroke(this.color, 100);
+        stroke(this.color);
         line(this.pos.x, this.pos.y, point.x, point.y);
         pop();
     }

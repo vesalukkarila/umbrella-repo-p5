@@ -20,11 +20,20 @@ class Particle{
     paint(walls) {
         push();
         for (let ray of this.rays) {
+            let closest = null;
+            let longest = Infinity;
             for (let wall of walls){
                 let point = ray.cast(wall);
                 if (point){
-                    ray.paintToIntersectionPoint(point);
+                    let distance = p5.Vector.dist(this.pos, point);
+                    if (distance < longest) {
+                        longest = distance;
+                        closest = point;
+                    }
                 }
+            }
+            if (closest){
+                ray.paintToIntersectionPoint(closest);
             }
         }
         noStroke();
@@ -33,18 +42,19 @@ class Particle{
         pop();
     }
 
+    moveIfGrabbed() {
+        if (this.isMouseInside()) {
+            this.updatePosToMousePos();
+        }
+    }
+
     isMouseInside() {
         
         return mouseX < this.pos.x  + this.radius && mouseX > this.pos.x - this.radius
             && mouseY < this.pos.y + this.radius && mouseY > this.pos.y - this.radius;
          
     }
-    moveIfGrabbed() {
-        if (this.isMouseInside()) {
-            console.log("osuu");
-            this.updatePosToMousePos();
-        }
-    }
+
     updatePosToMousePos() {
         this.pos.x = mouseX;
         this.pos.y = mouseY;
