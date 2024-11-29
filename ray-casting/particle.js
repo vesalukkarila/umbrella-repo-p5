@@ -16,10 +16,15 @@ class Particle{
 
     // TODO: update ray-class to check if it intersects with one of the walls and paint the ray only if it does so
     
-    paint() {
+    paint(walls) {
         push();
         for (let ray of this.rays) {
-            ray.paint();
+            for (let wall of walls){
+                let point = ray.cast(wall);
+                if (point){
+                    ray.paint();
+                }
+            }
         }
         noStroke();
         fill(255);

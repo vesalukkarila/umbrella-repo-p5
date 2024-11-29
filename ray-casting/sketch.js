@@ -46,6 +46,6 @@ function draw() {
   }
 
   for (let particle of particles) {
-    particle.paint();
+    particle.paint(walls);
   }
 }
