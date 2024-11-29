@@ -5,6 +5,7 @@ class Particle{
         this.nrOfRays = nrOfRays;
         this.rays = [];
         this.populateRays();
+        this.radius = 15;
     }
 
     populateRays() {
@@ -28,7 +29,25 @@ class Particle{
         }
         noStroke();
         fill(255);
-        ellipse(this.pos.x, this.pos.y, 15, 15);
+        circle(this.pos.x, this.pos.y, this.radius);
         pop();
+    }
+
+    isMouseInside() {
+        
+        return mouseX < this.pos.x  + this.radius && mouseX > this.pos.x - this.radius
+            && mouseY < this.pos.y + this.radius && mouseY > this.pos.y - this.radius;
+         
+    }
+    moveIfGrabbed() {
+        if (this.isMouseInside()) {
+            console.log("osuu");
+            this.updatePosToMousePos();
+        }
+    }
+    updatePosToMousePos() {
+        this.pos.x = mouseX;
+        this.pos.y = mouseY;
+        console.log("x: " + this.pos.x + " and y: " + this.pos.y);
     }
 }

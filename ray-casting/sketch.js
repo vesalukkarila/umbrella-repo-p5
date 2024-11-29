@@ -40,12 +40,18 @@ function setup() {
 function draw() {
   background(20);
 
-
-  for (let wall of walls){
-    wall.paint();
+  if (mouseIsPressed) {
+    for (let particle of particles) {
+      particle.moveIfGrabbed();
+    }
   }
+  // for (let wall of walls){
+  //   wall.paint();
+  // }
 
   for (let particle of particles) {
     particle.paint(walls);
   }
+
+
 }
