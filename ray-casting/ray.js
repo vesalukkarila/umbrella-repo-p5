@@ -14,6 +14,13 @@ class Ray {
         pop();
     }
 
+    paintToIntersectionPoint(point) {
+        push();
+        stroke(this.color, 100);
+        line(this.pos.x, this.pos.y, point.x, point.y);
+        pop();
+    }
+
     //https://en.wikipedia.org/wiki/Line–line_intersection
     cast(wall){
         const x1 = wall.aCoord.x;

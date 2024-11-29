@@ -22,7 +22,7 @@ class Particle{
             for (let wall of walls){
                 let point = ray.cast(wall);
                 if (point){
-                    ray.paint();
+                    ray.paintToIntersectionPoint(point);
                 }
             }
         }

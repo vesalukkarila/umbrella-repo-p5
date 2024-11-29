@@ -31,7 +31,7 @@ function setup() {
   green = color(5, 181, 152);
   purple = color(175, 17, 214);
   orange = color(219, 122, 2);
-  nrOfRays = 60;
+  nrOfRays = 460;
   particles.push(new Particle(pointA.x, pointB.y, green, nrOfRays));
   particles.push(new Particle(pointC.x, pointB.y, purple, nrOfRays));
   particles.push(new Particle(pointB.x, pointB.y * 5/2, orange, nrOfRays));
