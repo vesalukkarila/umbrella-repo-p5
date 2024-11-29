@@ -1,14 +1,27 @@
 class Particle{
-    constructor(x, y, color) {
-        this.pos = createVector(x, y);
+    constructor(x, y, color, nrOfRays) {
+        this.pos = createVector(x, y);          // updating this will also reflect each ray's position since they have the same reference object
         this.color = color;
+        this.nrOfRays = nrOfRays;
+        this.rays = [];
+        this.populateRays();
     }
 
+    populateRays() {
+        let direction = 360 / this.nrOfRays;
+        for (let i = 0; i < 360; i += direction) {
+            this.rays.push(new Ray(this.pos, radians(i), this.color))
+        }
+    }
 
     paint() {
         push();
-        fill(this.color);
-        ellipse(this.pos.x, this.pos.y, 15, 7);
+        for (let ray of this.rays) {
+            ray.paint();
+        }
+        noStroke();
+        fill(255);
+        ellipse(this.pos.x, this.pos.y, 15, 15);
         pop();
     }
 }

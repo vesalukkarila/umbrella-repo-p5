@@ -12,6 +12,7 @@ let particles = [];
 let green;
 let purple;
 let orange;
+let nrOfRays;
 
 function setup() {
   width = 640;
@@ -30,9 +31,10 @@ function setup() {
   green = color(5, 181, 152);
   purple = color(175, 17, 214);
   orange = color(219, 122, 2);
-  particles.push(new Particle(pointA.x, pointB.y, green));
-  particles.push(new Particle(pointC.x, pointB.y, purple));
-  particles.push(new Particle(pointB.x, pointB.y * 5/2, orange));
+  nrOfRays = 60;
+  particles.push(new Particle(pointA.x, pointB.y, green, nrOfRays));
+  particles.push(new Particle(pointC.x, pointB.y, purple, nrOfRays));
+  particles.push(new Particle(pointB.x, pointB.y * 5/2, orange, nrOfRays));
 }
 
 function draw() {
