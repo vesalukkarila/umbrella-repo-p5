@@ -4,11 +4,13 @@ class Particle{
         this.color = color;
         this.nrOfRays = nrOfRays;
         this.rays = [];
-        this.populateRays();
+        this.populateRays(nrOfRays);
         this.radius = 15;
     }
 
-    populateRays() {
+    populateRays(nrOfRays) {
+        this.nrOfRays = nrOfRays;
+        this.rays = [];
         let direction = 360 / this.nrOfRays;
         for (let i = 0; i < 360; i += direction) {
             this.rays.push(new Ray(this.pos, radians(i), this.color))
